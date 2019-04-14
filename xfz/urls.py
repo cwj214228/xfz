@@ -25,4 +25,5 @@ urlpatterns = [
     path('account/', include('apps.xfzauth.urls')),
     path('course/', include('apps.course.urls')),
     path('payinfo/', include('apps.payinfo.urls')),
+
 ]
