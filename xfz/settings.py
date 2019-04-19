@@ -42,13 +42,15 @@ INSTALLED_APPS = [
     'apps.xfzauth',
     'apps.course',
     'apps.payinfo',
+    'apps.ueditor',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -142,3 +144,30 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'front','dist')
 ]
+
+MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Qiniu配置
+QINIU_ACCESS_KEY = '9MDDUAqwOlE2WVqSuwq-Cug9CMiikxFkO_4THDc7'
+QINIU_SECRET_KEY = 'Z1kEZOwprrde-iIVFrIMQ1JW3M9BYJWqfdC_Pn67'
+QINIU_BUCKET_NAME = 'xfz_chenwenjie'
+QINIU_DOMAIN = 'http://pq1mbxsvm.bkt.clouddn.com/'
+
+# 七牛和自己的服务器，最少要配置一个
+# UEditor配置
+UEDITOR_UPLOAD_TO_QINIU = True
+UEDITOR_QINIU_ACCESS_KEY = QINIU_ACCESS_KEY
+UEDITOR_QINIU_SECRET_KEY = QINIU_SECRET_KEY
+UEDITOR_QINIU_BUCKET_NAME = QINIU_BUCKET_NAME
+UEDITOR_QINIU_DOMAIN = QINIU_DOMAIN
+
+
+UEDITOR_UPLOAD_TO_SERVER = True
+UEDITOR_UPLOAD_PATH = MEDIA_ROOT
+
+UEDITOR_CONFIG_PATH = os.path.join(BASE_DIR,'front','dist','ueditor','config.json')
+
+
+# 一页加载多少篇文章
+ONE_PAGE_NEWS_COUNT=2
