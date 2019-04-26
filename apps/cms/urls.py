@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+from . import course_views
 
 app_name = 'cms'
 urlpatterns = [
@@ -15,3 +16,8 @@ urlpatterns = [
     path('upload_file/', views.upload_file, name='upload_file'),
     path('qntoken/', views.qntoken, name='qntoken'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+# 这是课程相关的url映射
+urlpatterns += [
+    path('pub_course/',course_views.PubCourse.as_view(),name='pub_course')
+]

@@ -14,3 +14,13 @@ class News(models.Model):
     category = models.ForeignKey('NewsCategory',on_delete=models.SET_NULL,null=True)
     author = models.ForeignKey('xfzauth.User',on_delete=models.SET_NULL,null=True)
 
+    class Meta:
+        ordering=['-pub_time']
+
+
+class Comment(models.Model):
+    content = models.CharField(max_length=300)
+    pub_time = models.DateTimeField(auto_now_add=True)
+    news = models.ForeignKey("News",on_delete=models.CASCADE)
+    author = models.ForeignKey("xfzauth.User",on_delete=models.CASCADE)
+

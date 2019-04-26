@@ -1958,12 +1958,12 @@ S2.define('select2/selection/search',[
         }
 
         // Unbind the duplicated `keyup` event
-        self.$selection.off('keyup.search');
+        self.$selection.off('keyup.classification.js');
       }
     );
 
     this.$selection.on(
-      'keyup.search input.search',
+      'keyup.search input.classification.js',
       '.select2-search--inline',
       function (evt) {
         // IE will trigger the `input` event when a placeholder is used on a

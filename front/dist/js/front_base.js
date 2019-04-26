@@ -1,6 +1,8 @@
 
 // 用来处理导航条的
-function FrontBase() {}
+function FrontBase() {
+    var self = this;
+}
 
 
 FrontBase.prototype.run = function () {
@@ -203,7 +205,6 @@ $(function () {
     var auth = new Auth();
     auth.run();
 });
-
 
 $(function () {
     var frontBase = new FrontBase();

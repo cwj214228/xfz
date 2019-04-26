@@ -197,8 +197,9 @@ Index.prototype.listenCategorySwitchEvent = function () {
         xfzajax.get({
             'url': '/news/list/',
             'data': {
-                'category_id': category_id,
-                'p': page
+                'p': page,
+                'category_id': category_id
+
             },
             'success': function (result) {
                 if(result['code'] === 200){

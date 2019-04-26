@@ -28,10 +28,10 @@
             </div>
 
             <ul class="nav">
-                <li class="active"><a href="/">创业资讯</a></li>
-                <li><a href="#">创业课堂</a></li>
-                <li><a href="#">付费资讯</a></li>
-                <li><a href="#">搜索</a></li>
+                <li class="active" id="zixun"><a href="/">创业资讯</a></li>
+                <li id="ketang"><a href="{% url 'course:course_index' %}">创业课堂</a></li>
+                <li id="payzixun"><a href="#">付费资讯</a></li>
+                <li id="search"><a href="{% url 'search' %}">搜索</a></li>
             </ul>
 
             <div class="auth-box">
@@ -68,7 +68,7 @@
                     <div class="line1">
                         <ul class="links">
                             <li><a href="#">关于小饭桌</a></li>
-                            <li><a href="#">创业课堂</a></li>
+                            <li><a href="#" class="active">创业课堂</a></li>
                             <li><a href="#">寻求报道</a></li>
                             <li><a href="#">创业礼包</a></li>
                         </ul>

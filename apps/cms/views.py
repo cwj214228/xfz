@@ -53,7 +53,8 @@ class EditNewsView(View):
             'news': news,
             'categories': NewsCategory.objects.all()
         }
-        return render(request,'cms/write_news.html',context=context)
+        self.render = render(request, 'cms/write_news.html', context=context)
+        return self.render
 
     def post(self,request):
         form = EditNewsForm(request.POST)

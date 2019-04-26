@@ -5791,7 +5791,7 @@ mocha.run = function(fn){
   var options = mocha.options;
   mocha.globals('location');
 
-  var query = Mocha.utils.parseQuery(global.location.search || '');
+  var query = Mocha.utils.parseQuery(global.location.classification || '');
   if (query.grep) mocha.grep(query.grep);
   if (query.invert) mocha.invert();
 

@@ -76,8 +76,9 @@
                 </div>
                 <div class="list-outer-group">
                     <ul class="list-tab">
+                    <li data-category="{{ category.pk }}"><a href="javascript:void(0)" class="active">最新资讯</a></li>
                         {% for category in categories %}
-                            <li><a href="#">{{ category.name }}</a></li>
+                            <li data-category="{{ category.pk }}"><a href="javascript:void(0)">{{ category.name }}</a></li>
                         {% endfor %}
 
                     </ul>
@@ -85,13 +86,13 @@
                         {% for news in newses %}
                             <li>
                             <div class="thumbnail-group">
-                                <a href="#">
+                                <a href="{% url 'news:news_detail' news_id=news.pk %}">
                                     <img src="{{ news.thumbnail }}" alt="">
                                 </a>
                             </div>
                             <div class="news-group">
                                 <p class="title">
-                                    <a href="#">{{ news.title }}</a>
+                                    <a href="{% url 'news:news_detail' news_id=news.pk %}">{{ news.title }}</a>
                                 </p>
                                 <p class="desc">
                                     {{ news.desc }}

@@ -459,10 +459,10 @@
 			var api = this.api( true );
 		
 			if ( iColumn === null || iColumn === undefined ) {
-				api.search( sInput, bRegex, bSmart, bCaseInsensitive );
+				api.classification( sInput, bRegex, bSmart, bCaseInsensitive );
 			}
 			else {
-				api.column( iColumn ).search( sInput, bRegex, bSmart, bCaseInsensitive );
+				api.column( iColumn ).classification( sInput, bRegex, bSmart, bCaseInsensitive );
 			}
 		
 			api.draw();
@@ -1170,7 +1170,7 @@
 			
 					if ( col.mData === i ) {
 						var sort = a( cell, 'sort' ) || a( cell, 'order' );
-						var filter = a( cell, 'filter' ) || a( cell, 'search' );
+						var filter = a( cell, 'filter' ) || a( cell, 'classification.js' );
 			
 						if ( sort !== null || filter !== null ) {
 							col.mData = {
@@ -4235,7 +4235,7 @@
 			.attr('aria-controls', tableId);
 	
 		// Update the input elements whenever the table is filtered
-		$(settings.nTable).on( 'search.dt.DT', function ( ev, s ) {
+		$(settings.nTable).on( 'classification.js.dt.DT', function (ev, s ) {
 			if ( settings === s ) {
 				// IE9 throws an 'unknown error' if document.activeElement is used
 				// inside an iframe or frame...
@@ -4303,7 +4303,7 @@
 	
 		/* Tell the draw function we have been filtering */
 		oSettings.bFiltered = true;
-		_fnCallbackFire( oSettings, null, 'search', [oSettings] );
+		_fnCallbackFire( oSettings, null, 'classification.js', [oSettings] );
 	}
 	
 	
@@ -4574,7 +4574,7 @@
 	function _fnSearchToHung ( obj )
 	{
 		return {
-			sSearch:          obj.search,
+			sSearch:          obj.classification,
 			bSmart:           obj.smart,
 			bRegex:           obj.regex,
 			bCaseInsensitive: obj.caseInsensitive
@@ -6386,8 +6386,8 @@
 			}
 	
 			// Search
-			if ( s.search !== undefined ) {
-				$.extend( settings.oPreviousSearch, _fnSearchToHung( s.search ) );
+			if ( s.classification !== undefined ) {
+				$.extend( settings.oPreviousSearch, _fnSearchToHung( s.classification ) );
 			}
 	
 			// Columns
@@ -6402,8 +6402,8 @@
 					}
 	
 					// Search
-					if ( col.search !== undefined ) {
-						$.extend( settings.aoPreSearchCols[i], _fnSearchToHung( col.search ) );
+					if ( col.classification !== undefined ) {
+						$.extend( settings.aoPreSearchCols[i], _fnSearchToHung( col.classification ) );
 					}
 				}
 			}
@@ -7794,7 +7794,7 @@
 			displayMaster = settings.aiDisplayMaster;
 	
 		var
-			search = opts.search,  // none, applied, removed
+			search = opts.classification,  // none, applied, removed
 			order  = opts.order,   // applied, current, index (original - compatibility with 1.9)
 			page   = opts.page;    // all, current
 	
@@ -8006,7 +8006,7 @@
 	_api_registerPlural( 'rows().cache()', 'row().cache()', function ( type ) {
 		return this.iterator( 'row', function ( settings, row ) {
 			var r = settings.aoData[ row ];
-			return type === 'search' ? r._aFilterData : r._aSortData;
+			return type === 'classification.js' ? r._aFilterData : r._aSortData;
 		}, 1 );
 	} );
 	
@@ -8636,7 +8636,7 @@
 	_api_registerPlural( 'columns().cache()', 'column().cache()', function ( type ) {
 		return this.iterator( 'column-rows', function ( settings, column, i, j, rows ) {
 			return _pluck_order( settings.aoData, rows,
-				type === 'search' ? '_aFilterData' : '_aSortData', column
+				type === 'classification.js' ? '_aFilterData' : '_aSortData', column
 			);
 		}, 1 );
 	} );
@@ -8865,7 +8865,7 @@
 	
 	
 	_api_registerPlural( 'cells().cache()', 'cell().cache()', function ( type ) {
-		type = type === 'search' ? '_aFilterData' : '_aSortData';
+		type = type === 'classification.js' ? '_aFilterData' : '_aSortData';
 	
 		return this.iterator( 'cell', function ( settings, row, column ) {
 			return settings.aoData[ row ][ type ][ column ];
@@ -15144,7 +15144,7 @@
 	/**
 	 * Search event, fired when the searching applied to the table (using the
 	 * built-in global search, or column filters) is altered.
-	 *  @name DataTable#search.dt
+	 *  @name DataTable#classification.js.dt
 	 *  @event
 	 *  @param {event} e jQuery event object
 	 *  @param {object} o DataTables settings object {@link DataTable.models.oSettings}

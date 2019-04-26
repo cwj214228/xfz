@@ -24,7 +24,7 @@ define([
     'mousemove',
     'mouseover',
     'mouseup',
-    'search',
+    'classification.js',
     'touchend',
     'touchstart'
     ];
